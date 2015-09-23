@@ -1,0 +1,9 @@
+goals#show <br><br>
+
+Title: <%= @goal.title %><br>
+Body: <%= @goal.body %><br>
+Status : <%= @goal.status %><br><br>
+
+
+<%= link_to "Edit", edit_goal_url(@goal) %><br>
+<%= link_to "Delete", goal_url(@goal), method: :delete %>

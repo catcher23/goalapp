@@ -1,0 +1,17 @@
+users#show
+
+<% if logged_in? %>
+<h1><%= @user.username %>'s goals</h1>
+
+<% Goal.all.each do |goal| %>
+<ul>
+  <% if goal.public == "Yes" || goal.user_id == current_user.id %>
+<li><%= link_to goal.title, goal_url(goal)%> <%= "Author: #{goal.user.username}" %></li>
+<li>Status: <%= goal.status  %></li>
+<li>Public: <%= goal.public %></li>
+    <% end %>
+</ul>
+<% end %>
+
+<%= button_to "New Goal", new_goal_url, method: :get %>
+<% end %>

@@ -1,0 +1,32 @@
+<% title = goal.persisted? ? "Update Goal" : "Save" %>
+<% action = goal.persisted? ? goal_url(goal) : goals_url %>
+<% html_verb = goal.persisted? ? "PUT" : "POST" %>
+
+<h1><%= title %></h1>
+<form action = "<%= action %>" method = "Post">
+<input type ="hidden" name="_method" value="<%=html_verb%>">
+<%= auth_token %>
+
+<label>Title
+<input type="text" name="goal[title]" value="<%=goal.title%>">
+</label><br>
+
+<label>Body
+<textarea name="goal[body]"><%=goal.body%></textarea>
+</label><br><br>
+
+<label>Public
+  <br>
+  <label>Yes
+  <input type="radio" name="goal[public]" value="Yes" checked>
+</label><br>
+  <label>No
+  <input type="radio" name="goal[public]" value="No" >
+  </label>
+</label><br><br>
+
+<label>Status</label><br>
+  <input type="radio" name="goal[status]" value="incomplete">Incomplete<br>
+  <input type="radio" name="goal[status]" value="complete">Complete<br><br>
+
+<input type="submit" value="Save">
